@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-regiter',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegiterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit( data: any ) {
+    console.log(data);
+    this.authService.createUser(data.nombre, data.email, data.password);
   }
 
 }
