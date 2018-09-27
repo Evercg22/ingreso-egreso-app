@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -24,6 +24,7 @@ import { DetalleComponent } from './components/ingreso-egreso/detalle/detalle.co
 import { FooterComponent } from './components/share/footer/footer.component';
 import { NavbarComponent } from './components/share/navbar/navbar.component';
 import { SidebarComponent } from './components/share/sidebar/sidebar.component';
+import { IngresoEgresoPipe } from './pipes/ingreso-egreso/ingreso-egreso.pipe';
 
 
 
@@ -38,11 +39,13 @@ import { SidebarComponent } from './components/share/sidebar/sidebar.component';
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    IngresoEgresoPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
