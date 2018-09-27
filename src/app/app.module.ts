@@ -6,6 +6,11 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './app.reducer';
+
 // Modules
 import { AppRoutingModule } from './app.routes';
 
@@ -19,7 +24,7 @@ import { DetalleComponent } from './components/ingreso-egreso/detalle/detalle.co
 import { FooterComponent } from './components/share/footer/footer.component';
 import { NavbarComponent } from './components/share/navbar/navbar.component';
 import { SidebarComponent } from './components/share/sidebar/sidebar.component';
-import { environment } from '../environments/environment';
+
 
 
 @NgModule({
@@ -41,7 +46,12 @@ import { environment } from '../environments/environment';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
