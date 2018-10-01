@@ -11,6 +11,10 @@ import { IngresoEgreso } from '../../../models/ingreso-egreso.model';
 })
 export class EstadisticaComponent implements OnInit {
 
+   // Doughnut
+   public doughnutChartLabels: string[] = ['Ingresos', 'Egresos'];
+   public doughnutChartData: number[] = [];
+
   ingresos: number;
   egresos: number;
 
@@ -45,6 +49,8 @@ export class EstadisticaComponent implements OnInit {
         this.egresos += item.monto;
       }
     });
+
+    this.doughnutChartData = [ this.ingresos, this.egresos];
 
   }
 
