@@ -5,7 +5,6 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -16,40 +15,27 @@ import { appReducers } from './app.reducer';
 import { AppRoutingModule } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegiterComponent } from './components/auth/regiter/regiter.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { IngresoEgresoComponent } from './components/ingreso-egreso/ingreso-egreso.component';
-import { EstadisticaComponent } from './components/ingreso-egreso/estadistica/estadistica.component';
-import { DetalleComponent } from './components/ingreso-egreso/detalle/detalle.component';
-import { FooterComponent } from './components/share/footer/footer.component';
-import { NavbarComponent } from './components/share/navbar/navbar.component';
-import { SidebarComponent } from './components/share/sidebar/sidebar.component';
-import { IngresoEgresoPipe } from './pipes/ingreso-egreso/ingreso-egreso.pipe';
+
+
+// Modulo personalizado
+import { AuthModule } from './components/auth/aut.modul';
+import { ShareModule } from './components/share/share.module';
+import { IngresoEgresoModule } from './components/ingreso-egreso/ingreso-egreso.module';
+import { RouterModule } from '@angular/router';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegiterComponent,
-    DashboardComponent,
-    IngresoEgresoComponent,
-    EstadisticaComponent,
-    DetalleComponent,
-    FooterComponent,
-    NavbarComponent,
-    SidebarComponent,
-    IngresoEgresoPipe
   ],
   imports: [
     BrowserModule,
+    AuthModule,
+    ShareModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
     AngularFirestoreModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({

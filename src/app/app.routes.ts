@@ -2,8 +2,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegiterComponent } from './components/auth/regiter/regiter.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { dashboardRoutes } from './components/dashboard/dashboard.routes';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 
 
@@ -13,9 +11,8 @@ const routes: Routes = [
     { path: 'register', component: RegiterComponent },
     { 
         path: '', 
-        component: DashboardComponent,
-        children: dashboardRoutes ,
-        canActivate: [AuthGuardService]
+        loadChildren: './components/ingreso-egreso/ingreso-egreso.module#IngresoEgresoModule',
+        canLoad: [ AuthGuardService ]
     },
     { path: '**', redirectTo: ''  },
 ];
